@@ -1,0 +1,36 @@
+name: Generate Files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  execute-powershell:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run PowerShell script to download and save the index file
+      run: |
+        .\challenge.ps1
+      shell: pwsh 
+
+    - name: Verify the downloaded file
+      run: |
+        Write-Output "Verifying the contents of the downloaded index file..."
+        $indexContent = Get-Content -Path "index.txt"
+        Write-Output "Contents of index.txt:"
+        Write-Output $indexContent
+      shell: pwsh
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
+        git add index.txt logs report -f
+        git commit -m "Automated: Add index.txt, logs, and report files"
+        # Use GITHUB_TOKEN for authentication
+        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
