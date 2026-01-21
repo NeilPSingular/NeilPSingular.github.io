@@ -1,38 +1,38 @@
 [
   {
-    "LogDate": "2022-07",
-    "InfoLogs": 32,
-    "ErrorChangePercent": 0.0,
-    "Year": "2022",
     "Month": "July",
-    "ErrorLogs": 10,
-    "WarningLogs": 6,
     "WarningChangePercent": 0.0,
+    "InfoLogs": 32,
+    "LogDate": "2022-07",
+    "Year": "2022",
+    "ErrorChangePercent": 0.0,
+    "WarningLogs": 6,
+    "LogFile": "applogs_2022-07.csv",
     "TotalLogs": 48,
-    "LogFile": "applogs_2022-07.csv"
+    "ErrorLogs": 10
   },
   {
-    "LogDate": "2022-08",
-    "InfoLogs": 34,
-    "ErrorChangePercent": -60.0,
-    "Year": "2022",
     "Month": "August",
-    "ErrorLogs": 4,
-    "WarningLogs": 9,
     "WarningChangePercent": 50.0,
+    "InfoLogs": 34,
+    "LogDate": "2022-08",
+    "Year": "2022",
+    "ErrorChangePercent": -60.0,
+    "WarningLogs": 9,
+    "LogFile": "applogs_2022-08.csv",
     "TotalLogs": 47,
-    "LogFile": "applogs_2022-08.csv"
+    "ErrorLogs": 4
   },
   {
-    "LogDate": "2022-09",
-    "InfoLogs": 25,
-    "ErrorChangePercent": 25.0,
-    "Year": "2022",
     "Month": "September",
-    "ErrorLogs": 5,
-    "WarningLogs": 8,
     "WarningChangePercent": -11.11,
+    "InfoLogs": 25,
+    "LogDate": "2022-09",
+    "Year": "2022",
+    "ErrorChangePercent": 25.0,
+    "WarningLogs": 8,
+    "LogFile": "applogs_2022-09.csv",
     "TotalLogs": 38,
-    "LogFile": "applogs_2022-09.csv"
+    "ErrorLogs": 5
   }
 ]
