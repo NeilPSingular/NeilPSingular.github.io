@@ -2,9 +2,15 @@ body {
     font-family: sans-serif;
 }
 table {
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     width: 50%;
     margin: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 160ms ease, border-color 160ms ease;
 }
 h1 {
     margin: 20px;
@@ -13,7 +19,6 @@ h2 {
     margin: 20px;
 }
 th, td {
-    border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
@@ -29,6 +34,21 @@ tr:nth-child(even) {
 }
 tr:hover {
     background-color: #ddd;
+}
+
+/* Table inner separators to avoid double borders with rounded outer */
+tr > * + * { /* any cell that has a previous sibling */
+    border-left: 1px solid #e5e7eb;
+}
+
+tr + tr > * { /* any row after the first */
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Subtle hover like the file cards */
+table:hover {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    border-color: #d1d5db;
 }
 
 /* Header layout: H1 left, generated-on right */
@@ -87,40 +107,46 @@ h2 + ul li a:hover {
     color: #0f766e; /* teal-700 */
 }
 
-/* Generic file icon */
+/* Generic file icon using embedded SVG for consistent rendering */
 h2 + ul li a::before {
-    content: "📄";
-    font-size: 18px;
-    line-height: 1;
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    /* dark slate fill */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23111827'%3E%3Cpath d='M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z'/%3E%3Cpath d='M14 2v6h6' fill='%23111827'/%3E%3C/svg%3E");
 }
 
 /* Extension-specific icons/colors */
 h2 + ul li a[href$=".json"]::before {
-    content: "🧾";
-    color: #0ea5e9; /* sky-500 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230ea5e9'%3E%3Cpath d='M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z'/%3E%3Cpath d='M14 2v6h6' fill='%230ea5e9'/%3E%3C/svg%3E");
 }
 
 h2 + ul li a[href$=".csv"]::before {
-    content: "📊";
-    color: #10b981; /* emerald-500 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310b981'%3E%3Cpath d='M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z'/%3E%3Cpath d='M14 2v6h6' fill='%2310b981'/%3E%3C/svg%3E");
 }
 
 h2 + ul li a[href$=".txt"]::before {
-    content: "📄";
-    color: #6b7280; /* gray-500 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236b7280'%3E%3Cpath d='M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z'/%3E%3Cpath d='M14 2v6h6' fill='%236b7280'/%3E%3C/svg%3E");
 }
 
-/* Subtle chevron affordance */
+/* Subtle chevron affordance using embedded SVG */
 h2 + ul li a::after {
-    content: "⬇️";
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
     margin-left: auto;
-    color: #9ca3af; /* gray-400 */
-    transition: transform 160ms ease, color 160ms ease;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239ca3af'%3E%3Cpath d='M9 5l7 7-7 7'/%3E%3C/svg%3E");
+    transition: transform 160ms ease;
 }
 
 h2 + ul li:hover a::after {
     transform: translateX(2px);
-    color: #6b7280; /* gray-500 */
 }
 
 /* Focus accessibility */
